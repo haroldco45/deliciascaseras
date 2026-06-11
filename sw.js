@@ -1,14 +1,14 @@
 /* Service Worker — Delicias' Caseras (Vibras Positivas HM) */
-const CACHE = "delicias-caseras-v1";
+const CACHE = "delicias-caseras-v2";
 const ASSETS = [
   "./", "./index.html", "./manifest.json",
-  "./img/logo.jpg", "./img/icon-192.png", "./img/icon-512.png",
-  "./img/desayuno-chicharron.jpg", "./img/calentado-salchichas.jpg",
-  "./img/calentado-completo.jpg", "./img/desayuno-americano.jpg",
-  "./img/bolitas-platano.jpg", "./img/desayuno-ranchero.jpg",
-  "./img/chorizo-arepa.jpg", "./img/chuleta-cerdo.jpg",
-  "./img/filete-apanado.jpg", "./img/mojarra-frita.jpg",
-  "./img/pescado-frito.jpg"
+  "./logo.jpg", "./icon-192.png", "./icon-512.png",
+  "./desayuno-chicharron.jpg", "./calentado-salchichas.jpg",
+  "./calentado-completo.jpg", "./desayuno-americano.jpg",
+  "./bolitas-platano.jpg", "./desayuno-ranchero.jpg",
+  "./chorizo-arepa.jpg", "./chuleta-cerdo.jpg",
+  "./filete-apanado.jpg", "./mojarra-frita.jpg",
+  "./pescado-frito.jpg"
 ];
 
 self.addEventListener("install", e => {
@@ -35,4 +35,3 @@ self.addEventListener("fetch", e => {
     )
   );
 });
-
