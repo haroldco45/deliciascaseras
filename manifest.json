@@ -1,1 +1,15 @@
+{
+  "name": "Restaurante Delicias' Caseras",
+  "short_name": "Delicias' Caseras",
+  "description": "Desayunos y almuerzos caseros a domicilio en Caucasia. Pide por WhatsApp.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FFF6E9",
+  "theme_color": "#E8853D",
+  "lang": "es-CO",
+  "icons": [
+    { "src": "img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
 
