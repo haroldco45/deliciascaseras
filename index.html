@@ -1,1 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Restaurante Delicias' Caseras — Caucasia</title>
+<meta name="description" content="Comida casera con sabor del Bajo Cauca. Desayunos y almuerzos a domicilio en Caucasia. Pide por WhatsApp al 314 851 4758.">
+<meta name="theme-color" content="#E8853D">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="img/icon-192.png">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+
+<!-- Open Graph / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Restaurante Delicias' Caseras 🍲">
+<meta property="og:description" content="Desayunos y almuerzos caseros a domicilio en Caucasia. ¡Pide ya por WhatsApp!">
+<meta property="og:image" content="https://CAMBIAR-DOMINIO/img/logo.jpg">
+<meta property="og:url" content="https://CAMBIAR-DOMINIO/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --naranja:#E8853D;
+  --naranja-osc:#C96A24;
+  --crema:#FFF6E9;
+  --crema-card:#FFFDF8;
+  --cafe:#3A2417;
+  --verde:#7BA05B;
+  --rojo:#C4452B;
+  --sombra:0 4px 14px rgba(58,36,23,.12);
+  --radio:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--crema);color:var(--cafe);padding-bottom:90px}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none}
+
+/* ===== Header ===== */
+header{background:var(--naranja);color:#fff;padding:14px 16px 0;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:22px;background:var(--crema);border-radius:50% 50% 0 0 / 100% 100% 0 0}
+.head-top{display:flex;align-items:center;gap:12px;max-width:680px;margin:0 auto}
+.head-top img{width:62px;height:62px;border-radius:50%;border:3px solid #fff;box-shadow:var(--sombra)}
+.head-tit h1{font-family:'Lilita One',cursive;font-size:1.45rem;line-height:1.05;letter-spacing:.5px}
+.head-tit small{font-weight:700;opacity:.92;font-size:.78rem}
+.reloj{max-width:680px;margin:8px auto 26px;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;font-weight:700}
+.reloj .hora{background:rgba(255,255,255,.22);padding:3px 12px;border-radius:99px}
+.estado-abierto{display:inline-flex;align-items:center;gap:6px}
+.punto{width:9px;height:9px;border-radius:50%;background:#9CE873;box-shadow:0 0 8px #9CE873}
+.punto.cerrado{background:#FFB3A1;box-shadow:0 0 8px #FFB3A1}
+
+/* ===== Saludo según hora ===== */
+.saludo{max-width:680px;margin:14px auto 4px;padding:0 16px}
+.saludo h2{font-family:'Lilita One',cursive;font-size:1.6rem;color:var(--naranja-osc)}
+.saludo p{font-weight:600;color:#7a5c48;font-size:.92rem}
+
+/* ===== Chips categorías ===== */
+.chips{position:sticky;top:0;z-index:50;background:var(--crema);padding:10px 16px;display:flex;gap:10px;max-width:680px;margin:6px auto 0}
+.chip{flex:1;padding:10px 0;border-radius:99px;font-weight:800;font-size:.95rem;background:#fff;color:var(--cafe);box-shadow:var(--sombra);border:2px solid transparent;transition:.2s}
+.chip.activo{background:var(--naranja);color:#fff;border-color:var(--naranja-osc)}
+
+/* ===== Tarjetas ===== */
+.menu{max-width:680px;margin:0 auto;padding:12px 16px;display:grid;gap:16px}
+.card{background:var(--crema-card);border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);animation:subir .35s ease both}
+@keyframes subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card img{width:100%;height:190px;object-fit:cover}
+.card-body{padding:14px 16px 16px}
+.card-body h3{font-family:'Lilita One',cursive;font-size:1.15rem;color:var(--cafe);letter-spacing:.3px}
+.card-body p{font-size:.85rem;color:#7a5c48;font-weight:600;margin:4px 0 12px;line-height:1.4}
+.card-pie{display:flex;justify-content:space-between;align-items:center}
+.precio{font-family:'Lilita One',cursive;font-size:1.25rem;color:var(--naranja-osc)}
+.btn-add{background:var(--verde);color:#fff;font-weight:800;padding:9px 20px;border-radius:99px;font-size:.92rem;box-shadow:0 3px 0 #5d7d43;transition:.15s}
+.btn-add:active{transform:translateY(2px);box-shadow:none}
+.stepper{display:flex;align-items:center;gap:12px;background:var(--crema);border-radius:99px;padding:4px}
+.stepper button{width:34px;height:34px;border-radius:50%;background:var(--naranja);color:#fff;font-size:1.2rem;font-weight:800;line-height:1}
+.stepper span{font-weight:800;min-width:20px;text-align:center}
+
+/* ===== Barra carrito ===== */
+.barra-carrito{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:12px 16px;background:linear-gradient(transparent,var(--crema) 35%)}
+.barra-carrito button{width:100%;max-width:648px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;background:var(--cafe);color:#fff;padding:15px 22px;border-radius:99px;font-weight:800;font-size:1rem;box-shadow:0 6px 18px rgba(58,36,23,.35)}
+.barra-carrito .cant{background:var(--naranja);border-radius:99px;padding:2px 12px;margin-right:8px}
+.oculto{display:none!important}
+
+/* ===== Drawer ===== */
+.overlay{position:fixed;inset:0;background:rgba(58,36,23,.5);z-index:90;opacity:0;pointer-events:none;transition:.25s}
+.overlay.abierto{opacity:1;pointer-events:auto}
+.drawer{position:fixed;left:0;right:0;bottom:0;z-index:100;background:var(--crema);border-radius:24px 24px 0 0;max-height:92vh;overflow-y:auto;transform:translateY(105%);transition:.3s ease;padding:20px 18px 30px}
+.drawer.abierto{transform:none}
+.drawer h2{font-family:'Lilita One',cursive;color:var(--naranja-osc);font-size:1.4rem;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.cerrar{background:#fff;width:36px;height:36px;border-radius:50%;font-size:1.1rem;box-shadow:var(--sombra);color:var(--cafe)}
+.item-car{display:flex;gap:12px;align-items:center;background:#fff;border-radius:14px;padding:10px;margin-bottom:10px;box-shadow:var(--sombra)}
+.item-car img{width:58px;height:58px;border-radius:10px;object-fit:cover}
+.item-car .inf{flex:1}
+.item-car .inf b{font-size:.9rem;display:block}
+.item-car .inf small{color:var(--naranja-osc);font-weight:800}
+.total-linea{display:flex;justify-content:space-between;font-family:'Lilita One',cursive;font-size:1.3rem;margin:14px 4px;color:var(--cafe)}
+
+/* ===== Formulario ===== */
+.form label{display:block;font-weight:800;font-size:.82rem;margin:12px 0 5px;color:var(--cafe)}
+.form input,.form textarea,.form select{width:100%;padding:12px 14px;border-radius:12px;border:2px solid #EAD9C5;background:#fff;font-family:inherit;font-size:.95rem;font-weight:600;color:var(--cafe)}
+.form input:focus,.form textarea:focus,.form select:focus{outline:none;border-color:var(--naranja)}
+.tipos,.pagos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pagos{grid-template-columns:1fr 1fr}
+.opcion{padding:11px 6px;border-radius:12px;background:#fff;border:2px solid #EAD9C5;font-weight:800;font-size:.85rem;text-align:center;color:var(--cafe);transition:.15s}
+.opcion.activo{background:var(--naranja);border-color:var(--naranja-osc);color:#fff}
+.btn-gps{margin-top:8px;width:100%;background:var(--verde);color:#fff;font-weight:800;padding:11px;border-radius:12px;font-size:.88rem}
+.gps-ok{font-size:.78rem;font-weight:700;color:var(--verde);margin-top:5px}
+.habeas{font-size:.7rem;color:#9a7b63;margin-top:14px;line-height:1.45;background:#FFF1DE;padding:10px 12px;border-radius:10px}
+.btn-enviar{margin-top:16px;width:100%;background:#25D366;color:#fff;font-family:'Lilita One',cursive;font-size:1.15rem;letter-spacing:.5px;padding:15px;border-radius:99px;box-shadow:0 4px 0 #1aa851}
+.btn-enviar:active{transform:translateY(2px);box-shadow:none}
+.btn-enviar:disabled{opacity:.5}
+
+/* ===== Éxito ===== */
+.exito{position:fixed;inset:0;z-index:200;background:var(--naranja);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;transform:translateY(105%);transition:.35s}
+.exito.abierto{transform:none}
+.exito .emoji{font-size:4.5rem;animation:rebote 1s infinite alternate}
+@keyframes rebote{to{transform:translateY(-10px)}}
+.exito h2{font-family:'Lilita One',cursive;font-size:2rem;margin:14px 0 8px}
+.exito p{font-weight:700;max-width:300px}
+.exito button{margin-top:26px;background:#fff;color:var(--naranja-osc);font-weight:800;padding:13px 34px;border-radius:99px;font-size:1rem}
+
+/* ===== Footer ===== */
+footer{max-width:680px;margin:28px auto 0;padding:0 16px;text-align:center}
+footer .tel{font-weight:800;color:var(--naranja-osc)}
+footer .credito{margin-top:14px;font-size:.68rem;color:#b59880;font-weight:600}
+@media(min-width:600px){.menu{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-top">
+    <img src="img/logo.jpg" alt="Logo Delicias' Caseras">
+    <div class="head-tit">
+      <h1>Delicias' Caseras</h1>
+      <small>🍲 Sabor casero del Bajo Cauca · Caucasia</small>
+    </div>
+  </div>
+  <div class="reloj">
+    <span class="estado-abierto"><span class="punto" id="punto"></span><span id="estado">Abierto</span></span>
+    <span class="hora" id="hora">--:--</span>
+  </div>
+</header>
+
+<div class="saludo">
+  <h2 id="saludoTit">¡Hola!</h2>
+  <p id="saludoTxt">Mira nuestra carta y arma tu pedido.</p>
+</div>
+
+<nav class="chips" id="chips"></nav>
+<main class="menu" id="menu"></main>
+
+<footer>
+  <p>📦 Domicilios en Caucasia</p>
+  <p class="tel">📞 314 851 4758</p>
+  <p class="credito">Desarrollada por Vibras Positivas HM — Derechos de Autor Reservados</p>
+</footer>
+
+<!-- Barra carrito -->
+<div class="barra-carrito oculto" id="barraCarrito">
+  <button onclick="abrirCarrito()">
+    <span><span class="cant" id="barraCant">0</span> Ver mi pedido</span>
+    <span id="barraTotal">$0</span>
+  </button>
+</div>
+
+<!-- Drawer -->
+<div class="overlay" id="overlay" onclick="cerrarCarrito()"></div>
+<section class="drawer" id="drawer">
+  <h2>Tu pedido <button class="cerrar" onclick="cerrarCarrito()">✕</button></h2>
+  <div id="listaCarrito"></div>
+  <div class="total-linea"><span>Total</span><span id="totalDrawer">$0</span></div>
+
+  <div class="form">
+    <label>Tu nombre *</label>
+    <input id="fNombre" placeholder="¿Cómo te llamas?" autocomplete="name">
+
+    <label>Tu celular *</label>
+    <input id="fTel" type="tel" placeholder="3XX XXX XXXX" autocomplete="tel">
+
+    <label>¿Cómo recibes el pedido? *</label>
+    <div class="tipos">
+      <button class="opcion activo" data-tipo="Domicilio 🛵" onclick="setTipo(this)">Domicilio 🛵</button>
+      <button class="opcion" data-tipo="Recoger en el local 🚶" onclick="setTipo(this)">Paso a recoger 🚶</button>
+    </div>
+
+    <div id="grupoDireccion">
+      <label>Dirección de entrega *</label>
+      <input id="fDir" placeholder="Barrio, calle, casa…">
+      <button class="btn-gps" onclick="pedirGPS()">📍 Usar mi ubicación GPS</button>
+      <div class="gps-ok oculto" id="gpsOk">✅ Ubicación guardada, irá en el pedido</div>
+    </div>
+
+    <label>Método de pago *</label>
+    <div class="pagos">
+      <button class="opcion activo" data-pago="Efectivo 💵" onclick="setPago(this)">Efectivo 💵</button>
+      <button class="opcion" data-pago="Nequi 📱" onclick="setPago(this)">Nequi 📱</button>
+      <button class="opcion" data-pago="Daviplata 📱" onclick="setPago(this)">Daviplata 📱</button>
+      <button class="opcion" data-pago="Transferencia 🏦" onclick="setPago(this)">Transferencia 🏦</button>
+    </div>
+
+    <label>Nota para la cocina (opcional)</label>
+    <textarea id="fNota" rows="2" placeholder="Ej: sin cebolla, bien asadito…"></textarea>
+
+    <p class="habeas">🔒 <b>Protección de datos (Ley 1581 de 2012):</b> tu nombre, celular y dirección se usan únicamente para gestionar y entregar tu pedido. No se almacenan en este sitio ni se comparten con terceros.</p>
+
+    <button class="btn-enviar" id="btnEnviar" onclick="enviarPedido()">Enviar pedido por WhatsApp 📲</button>
+  </div>
+</section>
+
+<!-- Éxito -->
+<div class="exito" id="exito">
+  <div class="emoji">🍲</div>
+  <h2>¡Pedido enviado!</h2>
+  <p>Tu pedido se abrió en WhatsApp. Envíalo y en Delicias' Caseras lo confirmamos enseguida. ¡Gracias por preferirnos!</p>
+  <button onclick="nuevoPedido()">Hacer otro pedido</button>
+</div>
+
+<script>
+/* ============================================================
+   RESTAURANTE DELICIAS' CASERAS — Menú digital con pedidos
+   ⚙️ AJUSTAR AQUÍ: precios, nombres y descripciones de la carta
+   ============================================================ */
+const WHATSAPP = "573148514758";
+const HORARIO = { abre: 6, cierra: 16 }; // 6:00 am a 4:00 pm — ajustar
+
+const MENU = [
+  // ---------- DESAYUNOS ----------
+  { id:"d1", cat:"Desayunos", nombre:"Desayuno con Chicharrón", desc:"Chicharrón carnudo, patacones, huevos revueltos, queso costeño, hogao y chocolate caliente.", precio:14000, img:"img/desayuno-chicharron.jpg" },
+  { id:"d2", cat:"Desayunos", nombre:"Calentado con Salchichas", desc:"Arroz calentado de la casa, salchichas, patacón, queso y chocolate.", precio:12000, img:"img/calentado-salchichas.jpg" },
+  { id:"d3", cat:"Desayunos", nombre:"Calentado Completo", desc:"Frijoles calentados, chicharrón crocante, huevo frito y arepa con queso.", precio:14000, img:"img/calentado-completo.jpg" },
+  { id:"d4", cat:"Desayunos", nombre:"Desayuno Americano", desc:"Tostadas con jamón, huevos revueltos, salchichas, queso y bebida caliente.", precio:12000, img:"img/desayuno-americano.jpg" },
+  { id:"d5", cat:"Desayunos", nombre:"Bolitas de Plátano", desc:"Bolitas de plátano maduro con huevos revueltos, salchichas, queso rallado y chocolate.", precio:12000, img:"img/bolitas-platano.jpg" },
+  { id:"d6", cat:"Desayunos", nombre:"Desayuno Ranchero", desc:"Salchicha ranchera asada, patacones dorados y queso costeño.", precio:10000, img:"img/desayuno-ranchero.jpg" },
+  { id:"d7", cat:"Desayunos", nombre:"Chorizo con Arepa", desc:"Chorizos asados sobre arepa de maíz, con su toque de limón.", precio:9000, img:"img/chorizo-arepa.jpg" },
+  // ---------- ALMUERZOS ----------
+  { id:"a1", cat:"Almuerzos", nombre:"Chuleta de Cerdo", desc:"Chuleta jugosa a la plancha con arroz, lentejas, tajadas maduras y ensalada fresca.", precio:15000, img:"img/chuleta-cerdo.jpg" },
+  { id:"a2", cat:"Almuerzos", nombre:"Filete de Pescado Apanado", desc:"Filete crocante con arroz, patacones, frijolito y ensalada con limón.", precio:17000, img:"img/filete-apanado.jpg" },
+  { id:"a3", cat:"Almuerzos", nombre:"Mojarra Frita", desc:"Mojarra dorada con arroz, patacones, frijol de la casa y limón.", precio:18000, img:"img/mojarra-frita.jpg" },
+  { id:"a4", cat:"Almuerzos", nombre:"Pescado Frito del Día", desc:"Pescado fresco frito con arroz, patacones y ensalada. Pregunta por el pescado del día.", precio:17000, img:"img/pescado-frito.jpg" },
+];
+
+/* ================== Estado ================== */
+let carrito = JSON.parse(localStorage.getItem("dc_carrito") || "{}");
+let tipoEntrega = "Domicilio 🛵";
+let metodoPago = "Efectivo 💵";
+let gps = null;
+let catActiva = horaColombia().getHours() < 11 ? "Desayunos" : "Almuerzos";
+
+/* ================== Reloj Colombia (UTC-5) ================== */
+function horaColombia(){
+  return new Date(new Date().toLocaleString("en-US",{timeZone:"America/Bogota"}));
+}
+function tickReloj(){
+  const h = horaColombia();
+  document.getElementById("hora").textContent =
+    h.toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit",hour12:true,timeZone:"America/Bogota"});
+  const abierto = h.getHours() >= HORARIO.abre && h.getHours() < HORARIO.cierra;
+  document.getElementById("estado").textContent = abierto ? "Abierto ahora" : "Cerrado · abre 6:00 am";
+  document.getElementById("punto").classList.toggle("cerrado", !abierto);
+}
+function saludo(){
+  const hh = horaColombia().getHours();
+  const t = document.getElementById("saludoTit"), x = document.getElementById("saludoTxt");
+  if(hh < 11){ t.textContent = "¡Buenos días! ☀️"; x.textContent = "¿Desayunamos? Mira lo que tenemos recién hecho."; }
+  else if(hh < 16){ t.textContent = "¡Hora de almorzar! 🍛"; x.textContent = "Almuerzos caseros con todo el sabor del Bajo Cauca."; }
+  else { t.textContent = "¡Hola! 👋"; x.textContent = "Mira nuestra carta y deja tu pedido listo para mañana."; }
+}
+setInterval(tickReloj, 1000); tickReloj(); saludo();
+
+/* ================== Render ================== */
+const fmt = n => "$" + n.toLocaleString("es-CO");
+const CATS = [...new Set(MENU.map(m => m.cat))];
+
+function renderChips(){
+  document.getElementById("chips").innerHTML = CATS.map(c =>
+    `<button class="chip ${c===catActiva?'activo':''}" onclick="setCat('${c}')">${c==="Desayunos"?"🍳":"🍛"} ${c}</button>`
+  ).join("");
+}
+function setCat(c){ catActiva = c; renderChips(); renderMenu(); }
+
+function renderMenu(){
+  document.getElementById("menu").innerHTML = MENU.filter(m => m.cat===catActiva).map(m => {
+    const q = carrito[m.id]?.cant || 0;
+    return `<article class="card">
+      <img src="${m.img}" alt="${m.nombre}" loading="lazy">
+      <div class="card-body">
+        <h3>${m.nombre}</h3>
+        <p>${m.desc}</p>
+        <div class="card-pie">
+          <span class="precio">${fmt(m.precio)}</span>
+          ${q===0
+            ? `<button class="btn-add" onclick="agregar('${m.id}')">Agregar +</button>`
+            : `<div class="stepper">
+                 <button onclick="restar('${m.id}')">−</button><span>${q}</span><button onclick="agregar('${m.id}')">+</button>
+               </div>`}
+        </div>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+/* ================== Carrito ================== */
+function guardar(){ localStorage.setItem("dc_carrito", JSON.stringify(carrito)); }
+function agregar(id){
+  const m = MENU.find(x => x.id===id);
+  carrito[id] = carrito[id] || { ...m, cant:0 };
+  carrito[id].cant++;
+  guardar(); renderMenu(); renderBarra(); renderDrawer();
+}
+function restar(id){
+  if(!carrito[id]) return;
+  carrito[id].cant--;
+  if(carrito[id].cant <= 0) delete carrito[id];
+  guardar(); renderMenu(); renderBarra(); renderDrawer();
+}
+function totales(){
+  const items = Object.values(carrito);
+  return {
+    cant: items.reduce((s,i)=>s+i.cant,0),
+    total: items.reduce((s,i)=>s+i.cant*i.precio,0)
+  };
+}
+function renderBarra(){
+  const { cant, total } = totales();
+  const barra = document.getElementById("barraCarrito");
+  barra.classList.toggle("oculto", cant===0);
+  document.getElementById("barraCant").textContent = cant;
+  document.getElementById("barraTotal").textContent = fmt(total);
+}
+function renderDrawer(){
+  const items = Object.values(carrito);
+  document.getElementById("listaCarrito").innerHTML = items.length===0
+    ? `<p style="text-align:center;font-weight:700;color:#9a7b63;padding:20px 0">Tu pedido está vacío 🍽️</p>`
+    : items.map(i => `<div class="item-car">
+        <img src="${i.img}" alt="">
+        <div class="inf"><b>${i.nombre}</b><small>${fmt(i.precio)} c/u</small></div>
+        <div class="stepper">
+          <button onclick="restar('${i.id}')">−</button><span>${i.cant}</span><button onclick="agregar('${i.id}')">+</button>
+        </div>
+      </div>`).join("");
+  document.getElementById("totalDrawer").textContent = fmt(totales().total);
+}
+function abrirCarrito(){
+  renderDrawer();
+  document.getElementById("drawer").classList.add("abierto");
+  document.getElementById("overlay").classList.add("abierto");
+}
+function cerrarCarrito(){
+  document.getElementById("drawer").classList.remove("abierto");
+  document.getElementById("overlay").classList.remove("abierto");
+}
+
+/* ================== Formulario ================== */
+function setTipo(btn){
+  document.querySelectorAll("[data-tipo]").forEach(b=>b.classList.remove("activo"));
+  btn.classList.add("activo");
+  tipoEntrega = btn.dataset.tipo;
+  document.getElementById("grupoDireccion").classList.toggle("oculto", !tipoEntrega.includes("Domicilio"));
+}
+function setPago(btn){
+  document.querySelectorAll("[data-pago]").forEach(b=>b.classList.remove("activo"));
+  btn.classList.add("activo");
+  metodoPago = btn.dataset.pago;
+}
+function pedirGPS(){
+  if(!navigator.geolocation){ alert("Tu equipo no permite usar GPS, escribe la dirección."); return; }
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      gps = `https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude}`;
+      document.getElementById("gpsOk").classList.remove("oculto");
+    },
+    () => alert("No pudimos leer tu ubicación. Escribe la dirección, por favor.")
+  );
+}
+
+/* ================== Enviar pedido ================== */
+function enviarPedido(){
+  const nombre = document.getElementById("fNombre").value.trim();
+  const tel = document.getElementById("fTel").value.trim();
+  const dir = document.getElementById("fDir").value.trim();
+  const nota = document.getElementById("fNota").value.trim();
+  const { cant, total } = totales();
+
+  if(cant===0){ alert("Agrega al menos un plato a tu pedido 🍽️"); return; }
+  if(!nombre){ alert("Escribe tu nombre, por favor."); return; }
+  if(!/^3\d{9}$/.test(tel.replace(/\s/g,""))){ alert("Escribe un celular válido de 10 dígitos (empieza por 3)."); return; }
+  if(tipoEntrega.includes("Domicilio") && !dir && !gps){ alert("Escribe la dirección o usa el botón de GPS 📍"); return; }
+
+  const fecha = horaColombia().toLocaleString("es-CO",{dateStyle:"full",timeStyle:"short",timeZone:"America/Bogota"});
+  let msg = `🍲 *NUEVO PEDIDO — DELICIAS' CASERAS*\n`;
+  msg += `🗓️ ${fecha}\n`;
+  msg += `━━━━━━━━━━━━━━━\n`;
+  Object.values(carrito).forEach(i => {
+    msg += `▪️ ${i.cant} x ${i.nombre} — ${fmt(i.cant*i.precio)}\n`;
+  });
+  msg += `━━━━━━━━━━━━━━━\n`;
+  msg += `💰 *TOTAL: ${fmt(total)}*\n\n`;
+  msg += `👤 *Cliente:* ${nombre}\n`;
+  msg += `📞 *Celular:* ${tel}\n`;
+  msg += `🚚 *Entrega:* ${tipoEntrega}\n`;
+  if(tipoEntrega.includes("Domicilio")){
+    if(dir) msg += `📍 *Dirección:* ${dir}\n`;
+    if(gps) msg += `🗺️ *Ubicación GPS:* ${gps}\n`;
+  }
+  msg += `💳 *Pago:* ${metodoPago}\n`;
+  if(nota) msg += `📝 *Nota:* ${nota}\n`;
+
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
+  cerrarCarrito();
+  document.getElementById("exito").classList.add("abierto");
+}
+function nuevoPedido(){
+  carrito = {}; gps = null; guardar();
+  document.getElementById("gpsOk").classList.add("oculto");
+  document.getElementById("exito").classList.remove("abierto");
+  renderMenu(); renderBarra(); renderDrawer();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+/* ================== Init ================== */
+renderChips(); renderMenu(); renderBarra();
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("sw.js").catch(()=>{});
+}
+</script>
+</body>
+</html>
 
